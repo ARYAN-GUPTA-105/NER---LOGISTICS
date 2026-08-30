@@ -1,0 +1,118 @@
+## GLOBAL TASK TRACKING SYSTEM
+
+The project must maintain a `/tasks` directory for **every development phase and sub-phase**.
+
+Recommended structure:
+
+```text
+/tasks/
+├── phase-01/
+│   ├── phase-1A-task.md
+│   ├── phase-1B-task.md
+│   ├── phase-1C-task.md
+│   └── phase-1D-task.md
+│
+├── phase-02/
+│   ├── phase-2A-task.md
+│   ├── phase-2B-task.md
+│   └── ...
+│
+├── phase-03/
+│   └── ...
+│
+└── ...
+```
+
+### Rules
+
+Before starting any phase or sub-phase:
+
+1. Read the relevant phase specification.
+2. Read the corresponding task checklist.
+3. Create the checklist if it does not exist.
+4. Break the work into concrete, verifiable tasks.
+
+During implementation:
+
+* Mark completed tasks with `[x]`.
+* Keep unfinished tasks as `[ ]`.
+* Do not mark a task complete unless it has actually been implemented and verified.
+* Add newly discovered necessary tasks when appropriate.
+* Do not remove completed checklist items.
+
+After implementation:
+
+1. Review every checklist item.
+2. Verify completed items.
+3. Run the required tests.
+4. Mark only genuinely completed items as `[x]`.
+5. Document unresolved issues.
+6. Record whether the phase is ready for the next phase.
+
+### Task Checklist Format
+
+Use:
+
+```md
+# Phase X Task Checklist
+
+## Setup
+- [ ] Inspect existing code
+- [ ] Inspect architecture
+- [ ] Inspect relevant documentation
+
+## Implementation
+- [ ] Task 1
+- [ ] Task 2
+- [ ] Task 3
+
+## Responsive / UX
+- [ ] Desktop verification
+- [ ] Mobile verification
+
+## Testing
+- [ ] Lint
+- [ ] Type check
+- [ ] Tests
+- [ ] Production build
+
+## Final Verification
+- [ ] All requirements satisfied
+- [ ] No known critical issues
+- [ ] Documentation updated
+- [ ] Ready for next phase
+```
+
+### Agent Behavior
+
+Every AI agent working on the project must:
+
+* Read the relevant task checklist before making changes.
+* Update the checklist as work progresses.
+* Never falsely mark work as complete.
+* Preserve previous task history.
+* Review the checklist before declaring the phase complete.
+
+The task checklist is part of the project's permanent development history and must remain synchronized with the actual state of the codebase.
+
+### Important
+
+The checklist does **not** replace the phase specification.
+
+The hierarchy is:
+
+```text
+MASTER PROJECT CONTEXT
+        ↓
+PHASE SPECIFICATION
+        ↓
+TASK CHECKLIST
+        ↓
+CODE
+```
+
+The specification defines **what should be built**.
+
+The checklist records **what has actually been completed**.
+
+The code represents **the current implementation**.
