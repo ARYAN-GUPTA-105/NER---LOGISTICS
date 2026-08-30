@@ -2,6 +2,9 @@ import React from 'react';
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom';
 import { RoleSelection } from './components/RoleSelection';
 import { RoleLogin } from './components/RoleLogin';
+import { useAuth } from './context/AuthContext';
+import { DriverProvider } from './driver/DriverContext';
+import { DriverApp } from './driver/DriverApp';
 import type { RoleId } from './data/roles';
 
 const LoginRoute: React.FC = () => {
@@ -35,11 +38,26 @@ const RoleSelectionRoute: React.FC = () => {
   return <RoleSelection onContinue={handleRoleSelection} />;
 };
 
+const DriverRoute: React.FC = () => {
+  const { authState, user } = useAuth();
+
+  if (authState !== 'authenticated' || user?.roleId !== 'driver') {
+    return <Navigate to="/login/driver" replace />;
+  }
+
+  return (
+    <DriverProvider>
+      <DriverApp />
+    </DriverProvider>
+  );
+};
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<RoleSelectionRoute />} />
       <Route path="/login/:role" element={<LoginRoute />} />
+      <Route path="/driver/*" element={<DriverRoute />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

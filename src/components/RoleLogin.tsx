@@ -3,6 +3,7 @@ import { ArrowLeft, Eye, EyeOff, Loader2, Truck, Building2, MapPin, ShieldCheck,
 import { ROLES } from '../data/roles';
 import type { RoleId } from '../data/roles';
 import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 import styles from './RoleLogin.module.css';
 
 const IconMap: Record<string, React.ReactNode> = {
@@ -55,13 +56,16 @@ export const RoleLogin: React.FC<RoleLoginProps> = ({ roleId, onChangeRole }) =>
   if (!role) return null;
 
   if (authState === 'authenticated') {
+    if (roleId === 'driver') {
+      return <Navigate to="/driver" replace />;
+    }
     return (
       <div className={styles.container}>
         <div className={styles.loginCard}>
           <div className={styles.successMsg}>
             <CheckCircle2 size={48} style={{ margin: '0 auto 1rem', color: '#10b981' }} />
             <h2 style={{ color: 'white', marginBottom: '0.5rem' }}>Successfully Authenticated</h2>
-            <p>Welcome back, {role.name}.</p>
+            <p>Welcome back, {role.name}. Your role workspace will be introduced in its dedicated phase.</p>
             <button className={styles.loginBtn} style={{ marginTop: '2rem' }} onClick={() => { logout(); onChangeRole(); }}>
               Log out / Change Role
             </button>

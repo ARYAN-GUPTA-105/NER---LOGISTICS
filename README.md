@@ -1,32 +1,38 @@
-# React + TypeScript + Vite
+# Smart NER Logistics
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Smart NER Logistics is a mobile-first logistics and accessibility intelligence platform being developed for Smart India Hackathon 2026, PS 26002.
 
-Currently, two official plugins are available:
+## Current implementation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Phase 1 provides a unified role-selection and authentication flow. Phase 2 implements the connected Driver Core:
 
-## React Compiler
+- Driver Home and responsive application shell
+- Trip list, delivery details, guarded start/completion lifecycle
+- Opt-in browser location foundation and operational route view
+- Clearly labelled development route/disruption recommendations
+- Alert center, Driver incident reporting, and an SOS intent flow
+- Offline indicator, local report queue, profile/vehicle information, and delivery history
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The Phase 2 experience uses development-only mock data stored locally in the browser. It has no production authentication backend, location transport service, AI/ML service, remote sync endpoint, media storage, or emergency-service integration. Those integration boundaries are deliberately separated from the UI for future implementation.
 
-## Expanding the Oxlint configuration
+## Run locally
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Verify
+
+```bash
+npm run lint
+npm run build
+```
+
+## Project records
+
+- Phase context and specifications: `/phase1` and `/phase 2`
+- Completed task records: `/tasks/phase-01` and `/tasks/phase-02`
+- Driver state and integration boundary: `/src/driver/DriverContext.tsx`
+
+The project is developed phase by phase. Do not extend into Logistics Company, Field Officer, Authority, or full intelligence-platform workflows until their dedicated phase is active.
